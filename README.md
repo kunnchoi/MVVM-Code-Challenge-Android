@@ -1,6 +1,6 @@
 # code-challenge-android
 
-Programmiong Language: Kotlin 1.3.41
+Programming Language: Kotlin 1.3.41
 
 TargetSdkVersion: 29
 
