@@ -37,12 +37,12 @@ class CartViewModel(private val cartRepository: CartRepository) : ViewModel() {
             var tax = 0.0
             totalPrice += listingItem.price
             listingItem.salesTax.apply {
-                tax = ((listingItem.salesTax!!.toDouble() * listingItem.price) / 100)
-                tax = round(tax.toDouble(), 0.05)
+                val salesTax = ((listingItem.salesTax!!.toDouble() * listingItem.price) / 100)
+                tax = round(salesTax, 0.05)
             }
             if (listingItem.imported != null && listingItem.imported!!) {
-                tax += (IMPORT_TAX * listingItem.price) / 100
-                tax += round(tax.toDouble(), 0.05)
+                val importDuty = (IMPORT_TAX * listingItem.price) / 100
+                tax += round(importDuty, 0.05)
             }
 
             listingItem.quantity.let {
@@ -63,6 +63,6 @@ class CartViewModel(private val cartRepository: CartRepository) : ViewModel() {
     private fun round(num: Double, nearest: Double): Double {
         var n = 1 / nearest
         val numberToRound = num * n
-        return Math.round(numberToRound).toDouble() / n
+        return Math.ceil(numberToRound).toDouble() / n
     }
 }
