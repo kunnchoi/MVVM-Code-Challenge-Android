@@ -20,9 +20,9 @@ data class CartEntity(
     override val imported: Boolean?,
     @ColumnInfo(name = "salesTax")
     override val salesTax: Int?
-) : Cart{
+) : Cart {
     @Ignore
-    override val quantity : Int=0
+    override val quantity: Int = 0
     @Ignore
     override var totalTax = 0f
 }

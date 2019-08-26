@@ -1,9 +1,9 @@
 package com.jandas.codechallenge.application
 
 import android.app.Application
-import com.jandas.codechallenge.db.AppDatabase
 import com.jandas.codechallenge.datasource.ListingDataSource
 import com.jandas.codechallenge.datasource.ListingDataSourceImpl
+import com.jandas.codechallenge.db.AppDatabase
 import com.jandas.codechallenge.repositories.listing.ListingRepository
 import com.jandas.codechallenge.repositories.listing.ListingRepositoryImpl
 import com.jandas.codechallenge.repositories.receipt.ReceiptRepository

@@ -36,7 +36,8 @@ abstract class BaseFragment : Fragment(), KodeinAware, CoroutineScope {
         super.onActivityCreated(savedInstanceState)
         initializeUi()
     }
-    protected abstract fun getLayoutId() : Int
+
+    protected abstract fun getLayoutId(): Int
     protected abstract fun initializeUi(): Job
 
     override fun onDestroy() {

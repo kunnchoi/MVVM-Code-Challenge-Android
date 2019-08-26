@@ -5,6 +5,7 @@ import com.jandas.codechallenge.model.cart.Cart
 import com.jandas.codechallenge.ui.listing.ListingItemCell
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_receipt.*
+import kotlin.math.ceil
 
 
 class ReceiptItemCell(private val listingItem: Cart) :
@@ -24,7 +25,7 @@ class ReceiptItemCell(private val listingItem: Cart) :
     override fun getLayout() = R.layout.item_receipt
 
 
-    fun round05(value : Float) = Math.ceil(((value * 100).toDouble())) / 100
+    fun round05(value: Float) = ceil(((value * 100).toDouble())) / 100
 
 
 }

@@ -3,14 +3,16 @@ package com.jandas.codechallenge.ui.receipt
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentManager
 import com.jandas.codechallenge.R
 import com.jandas.codechallenge.model.cart.Cart
 import com.jandas.codechallenge.ui.activity.home.HomeActivity
 import com.jandas.codechallenge.ui.cart.CartFragment
+import com.jandas.codechallenge.utlis.extensions.hide
 import kotlinx.android.synthetic.main.receipt_fragment.*
 import kotlinx.coroutines.Job
+
 
 class ReceiptFragment : CartFragment() {
 
@@ -40,15 +42,10 @@ class ReceiptFragment : CartFragment() {
         btnDone.text = getString(R.string.purchase)
         btnDone.setOnClickListener {
             viewModel.clearCart()
-            Toast.makeText(
-                activity,
-                getString(R.string.order_successful),
-                Toast.LENGTH_SHORT
-            ).show()
-            activity?.supportFragmentManager?.popBackStack(
-                null,
-                FragmentManager.POP_BACK_STACK_INCLUSIVE
-            )
+            txt_total_tax.hide()
+            txt_total_price.hide()
+            btnDone.hide()
+            showSuccessDialog()
         }
     }
 
@@ -63,5 +60,20 @@ class ReceiptFragment : CartFragment() {
         txt_total_tax.text = "Sales Taxes: $%s".format(viewModel.getTotalCartTax())
         txt_total_price.text = "Total: $%s".format(viewModel.getTotalCartPrice())
         // override to hide cart related actions
+    }
+
+    fun showSuccessDialog() {
+        val builder = AlertDialog.Builder(activity!!)
+        builder.setCancelable(false)
+        builder.setMessage(getString(R.string.order_successful))
+            .setCancelable(false)
+            .setPositiveButton("OK") { _, _ ->
+                activity?.supportFragmentManager?.popBackStack(
+                    null,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
+            }
+        val alert = builder.create()
+        alert.show()
     }
 }

@@ -29,7 +29,7 @@ data class ListingItemEntry(
 
 ) : Cart {
     @Ignore
-    override var totalTax: Float =0f
+    override var totalTax: Float = 0f
 
 
 }

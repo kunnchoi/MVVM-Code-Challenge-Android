@@ -13,7 +13,10 @@ import com.jandas.codechallenge.model.cart.Cart
 import com.jandas.codechallenge.ui.BaseFragment
 import com.jandas.codechallenge.ui.activity.home.HomeActivity
 import com.jandas.codechallenge.ui.listeners.AddToCartClickListener
-import com.jandas.codechallenge.viewmodel.*
+import com.jandas.codechallenge.viewmodel.CartViewModel
+import com.jandas.codechallenge.viewmodel.CartViewModelFactory
+import com.jandas.codechallenge.viewmodel.ListingViewModel
+import com.jandas.codechallenge.viewmodel.ListingViewModelFactory
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.listing_fragment.*

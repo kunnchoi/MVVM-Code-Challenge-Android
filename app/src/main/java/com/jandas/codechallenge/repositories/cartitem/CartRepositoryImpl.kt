@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import com.jandas.codechallenge.db.CartDao
 import com.jandas.codechallenge.db.CartQuantityDao
 import com.jandas.codechallenge.db.entity.CartEntity
-import com.jandas.codechallenge.model.cart.CartQuantityEntity
 import com.jandas.codechallenge.model.cart.Cart
+import com.jandas.codechallenge.model.cart.CartQuantityEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

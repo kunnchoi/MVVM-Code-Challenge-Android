@@ -18,12 +18,12 @@ class CartItemCell(
             txt_quantity.text = listingItem.quantity.toString()
             txt_decrease_quantity.setOnClickListener {
                 listener.apply {
-                    decreaseQuantity(listingItem=listingItem)
+                    decreaseQuantity(listingItem = listingItem)
                 }
             }
             txt_increase_quantity.setOnClickListener {
                 listener.apply {
-                    increaseQuantity(listingItem=listingItem)
+                    increaseQuantity(listingItem = listingItem)
                 }
             }
         }
