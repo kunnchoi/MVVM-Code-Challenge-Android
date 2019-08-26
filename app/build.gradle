@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply from: '../buildsystem/dependencies.gradle'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.jandas.codechallenge"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "env"
+    productFlavors {
+        dev {
+            dimension "env"
+            buildConfigField "boolean", "CRASH_REPORTING", "false"
+            buildConfigField "boolean", "LOGGING", "true"
+        }
+        prod {
+            dimension "env"
+            buildConfigField "boolean", "CRASH_REPORTING", "true"
+            buildConfigField "boolean", "LOGGING", "false"
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+
+    implementation generalDependencies.values()
+    implementation networkDependencies.values()
+    implementation roomDependencies.values()
+    implementation groupieDependencies.values()
+    implementation viewModelDependencies.values()
+    implementation kodinDependencies.values()
+    kapt kaptCompiler.values()
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+//    implementation rootProject.ext.generalDependencies.coroutines
+}
