@@ -10,7 +10,6 @@ import com.jandas.codechallenge.repositories.receipt.ReceiptRepository
 import com.jandas.codechallenge.repositories.receipt.ReceiptRepositoryImpl
 import com.jandas.codechallenge.viewmodel.CartViewModelFactory
 import com.jandas.codechallenge.viewmodel.ListingViewModelFactory
-import com.jandas.codechallenge.viewmodel.ReceiptViewModelFactory
 import com.jandas.codechallenge.viewmodel.repository.CartRepository
 import com.jandas.codechallenge.viewmodel.repository.CartRepositoryImpl
 import org.kodein.di.Kodein
@@ -33,6 +32,5 @@ class CodingChallengeApplication : Application(), KodeinAware {
         bind<ReceiptRepository>() with singleton { ReceiptRepositoryImpl() }
         bind() from provider { CartViewModelFactory(instance()) }
         bind() from provider { ListingViewModelFactory(instance()) }
-        bind() from provider { ReceiptViewModelFactory(instance()) }
     }
 }

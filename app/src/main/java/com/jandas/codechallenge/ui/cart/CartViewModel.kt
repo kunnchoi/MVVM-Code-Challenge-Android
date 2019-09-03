@@ -29,14 +29,14 @@ class CartViewModel(private val cartRepository: CartRepository) : BaseViewModel(
     val cartItems by lazyDeferred { cartRepository.getCartItems() }
 
     fun calculateTax() = runBlocking {
-        calculateTax(cartItems.await().value)
+        calculateTax(cartItems.await()?.value)
     }
 
     fun getTotalCartPrice() = "%.2f".format(totalPrice)
     fun getTotalCartTax() = "%.2f".format(totalTax)
 
     fun isValidDataSet() = runBlocking {
-        cartItems.await().value.isNullOrEmpty()
+        cartItems.await()?.value.isNullOrEmpty()
     }
 
 

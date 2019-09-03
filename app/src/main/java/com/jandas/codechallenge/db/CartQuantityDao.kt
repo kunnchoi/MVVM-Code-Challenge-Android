@@ -16,6 +16,9 @@ interface CartQuantityDao {
     @Query("SELECT quantity FROM cart_info WHERE id = :listingItemId")
     fun getItemQuantity(listingItemId: Int): Int
 
+    @Query("SELECT count(*) FROM cart_info")
+    fun getItemsCount(): Int
+
     @Query("DELETE FROM cart_info")
     fun clearAll()
 

@@ -52,7 +52,7 @@ open class CartFragment : BaseFragment(), CartQuantityChangeListener {
         viewModel = ViewModelProviders.of(this@CartFragment, viewModelFactory)
             .get(CartViewModel::class.java)
         val cartItems = viewModel.cartItems.await()
-        cartItems.observe(this@CartFragment, Observer { cartItems ->
+        cartItems?.observe(this@CartFragment, Observer { cartItems ->
             setViewsVisibility()
             if (cartItems == null) return@Observer
             listingAdapter.apply {

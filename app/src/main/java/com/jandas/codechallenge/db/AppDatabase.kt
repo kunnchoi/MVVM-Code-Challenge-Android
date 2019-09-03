@@ -13,6 +13,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun cartQuantityDao(): CartQuantityDao
 
     companion object {
+        var TEST_MODE = false
         @Volatile
         private var instance: AppDatabase? = null
         private val LOCK = Any()
@@ -22,10 +23,19 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(
-                context.applicationContext,
-                AppDatabase::class.java, "coding_challenge.db"
-            )
-                .build()
+            if (TEST_MODE){
+                Room.inMemoryDatabaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java
+                ).allowMainThreadQueries()
+                    .build()
+
+            }else {
+                Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java, "coding_challenge.db"
+                )
+                    .build()
+            }
     }
 }

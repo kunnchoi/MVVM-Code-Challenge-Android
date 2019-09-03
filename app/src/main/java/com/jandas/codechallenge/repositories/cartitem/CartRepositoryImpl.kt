@@ -26,7 +26,7 @@ class CartRepositoryImpl(
         }
     }
 
-    override suspend fun getCartItems(): LiveData<out List<Cart>> {
+    override suspend fun getCartItems(): LiveData<out List<Cart>>? {
         return withContext(Dispatchers.IO) {
             return@withContext cartDao.getAllItems()
         }
@@ -38,6 +38,12 @@ class CartRepositoryImpl(
                 listingItem.id,
                 getItemQuantity(getDBCartEntity(listingItem)) + 1
             )
+        }
+    }
+
+    override suspend fun getItem(id: Int): Cart? {
+        return withContext(Dispatchers.IO){
+            return@withContext cartDao.getItem(id)
         }
     }
 

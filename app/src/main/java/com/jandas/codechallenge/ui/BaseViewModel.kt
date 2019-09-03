@@ -9,6 +9,8 @@ open class BaseViewModel : ViewModel() {
     var totalPrice = 0F
 
     open fun calculateTax(cartItems : List<Cart>?){
+        totalTax = 0F
+        totalPrice = 0F
         cartItems?.forEach { listingItem ->
             var tax = 0.0
             totalPrice += listingItem.price
@@ -32,6 +34,6 @@ open class BaseViewModel : ViewModel() {
     private fun round(num: Double, nearest: Double): Double {
         var n = 1 / nearest
         val numberToRound = num * n
-        return Math.ceil(numberToRound).toDouble() / n
+        return Math.ceil(numberToRound) / n
     }
 }
